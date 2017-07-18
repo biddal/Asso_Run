@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% extends "template.html.twig" %}
+{% block principal %}
+    <div class="head">
+        <p>Notre association est à but non lucratif.</p>
+        <p>Celle-ci a été créée en 1999 par Thierry Henry et Zinédine Zidane.</p>
+        <p>Elle compte actuellement un nombre de membres de l'ordre de 73 et ne cesse d'évoluer avec les années.</p>
+    </div>
+    <div class="prin">
+        <div class="image">
+            {% image 'images/icone.png' %}
+                <img src="{{ asset_url }}" alt="Example" />
+            {% endimage %}
+        </div>  
+        <div class="texte">
+            <p>Notre but est de faire découvrir au plus grand nombre notre passion ainsi que ses valeurs.</p>
+            <p>Jovialité, dépassement de soi et cohésion de groupe ne sont que des exemples de ses valeurs qui correspondent bien à la 
+                pratique de ce sport.
+            </p>              
+        </div>
+    </div>
+    <div class="foot">
+        <p>Notre association est bien évidement ouverte à toute personne en situation de handicap. Certains de nos bénévoles ont été formés
+           en vue d'accompagner les personnes en situation de handicap afin qu'ils puissent pratiquer cette discipline dans les meilleurs 
+           conditions possibles et celà sans danger.</p>
+    </div>
+{% endblock %}

@@ -1,0 +1,180 @@
+*
+{
+  width:100%;
+  padding:0;
+  margin:0;
+}
+@font-face {
+	font-family: "Predator";
+	src: url('../fonts/old_stamper.ttf');
+}
+body
+{
+  display:flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+header
+{
+  display:flex;
+  flex-flow: row nowrap;
+  width:80%;
+  height: 150px;
+  background-color: #2E64FE;
+  margin-bottom: 10px;
+}
+header div:nth-child(1)
+{
+  display:flex;
+  flex-flow: row nowrap;
+  margin-left:2%;
+  width:30%;
+}
+header div:nth-child(1) img
+{
+  width:80%;
+}
+header div:nth-child(2)
+{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width:70%;
+}
+header h1
+{
+	font-family: "Predator", Helvetica, Arial, sans-serif;
+	font-size:45px;
+	width:100%;
+	color:white;
+}
+/******************************************************************************/
+/*                                Nav                                         */
+/******************************************************************************/
+nav
+{
+  position: sticky;
+  top:0;
+  display:flex;
+  flex-flow: row nowrap;
+  width:80%;
+  height: 30px;
+  margin-bottom: 10px;
+}
+.first_div
+{
+  display:flex;
+  flex-flow: row nowrap;
+}
+.secondary_div
+{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-image:-moz-linear-gradient(left,#FAFAFA, #2E64FE);
+  background-image:-webkit-linear-gradient(left,#FAFAFA, #2E64FE);
+  background-image:-o-linear-gradient(left,#FAFAFA, #2E64FE);
+  background-image:linear-gradient(left,#FAFAFA, #2E64FE);
+}
+#center
+{
+	text-align:center;
+	display:inline;
+}
+/******************************************************************************/
+/*                                Login                                        */
+/******************************************************************************/
+.login
+{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width:80%;
+  height: 30px;
+  margin-bottom: 10px; 
+  background-color: #2E64FE;
+}
+.bloc
+{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  width:70%;
+}
+.login_div
+{
+  display:flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  width:50%;
+}
+/******************************************************************************/
+/*                                Main                                        */
+/******************************************************************************/
+main
+{
+  display:flex;
+  flex-flow: row nowrap;
+  width:80%;
+  background-color: #2E64FE;
+  padding:0;
+  margin:0;
+  margin-bottom: 10px;
+}
+.bloc_principal
+{
+  display:flex;
+  flex-flow: column nowrap;
+  margin:auto;
+  text-align: center;
+  justify-content: center;
+  min-height: calc(100vh - 330px); 
+  background-image:-moz-linear-gradient(#FFFFFF, #2E64FE);
+  background-image:-webkit-linear-gradient(#FFFFFF, #2E64FE);
+  background-image:-o-linear-gradient(#FFFFFF, #2E64FE);
+  background-image:linear-gradient(#FFFFFF, #2E64FE);
+}
+.head
+{
+    margin-bottom: 10px;
+}
+.prin
+{
+    width:100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.image
+{
+    width:20%;
+}
+.texte
+{
+    width:70%;
+    margin:auto;
+}
+
+/******************************************************************************/
+/*                                Footer                                      */
+/******************************************************************************/
+footer
+{
+  width:80%;
+  height: 100px;
+  background-color: #2E64FE;
+}
+/******************************************************************************/
+/*                             Media Query                                    */
+/******************************************************************************/
+@media screen and (max-width: 768px)
+{
+  
+}

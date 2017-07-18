@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> <!-- Appel de la librairie pour affichage des icones font -->
+        {% stylesheets 'css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    </head>
+    <body>
+      <header>
+        <div>
+            {% image 'images/logo.png' %}
+                <img src="{{ asset_url }}" alt="Example" />
+            {% endimage %}
+        </div>
+        <div>
+          <h1>Athletik – les 1000 pas</h1>
+        </div>
+      </header>
+      <nav>
+		<!-- <a href="#">Menu</a> -->
+			<div class="first_div">
+			  <div class="secondary_div">
+                              <i id="center" class="fa fa-home" aria-hidden="true"></i><a href="">Accueil</a><i id="center" class="fa fa-home" aria-hidden="true"></i>
+			  </div>
+			  <div class="secondary_div">
+				<i id="center" class="fa fa-forumbee" aria-hidden="true"></i><a href="">Evénements</a><i id="center" class="fa fa-forumbee" aria-hidden="true"></i>
+			  </div>
+			  <div class="secondary_div">
+				<i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i><a href="">Résultats</a><i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i>
+			  </div>
+			  <div class="secondary_div">
+				<i id="center" class="fa fa-calendar" aria-hidden="true"></i><a href="">Classements</a><i id="center" class="fa fa-calendar" aria-hidden="true"></i>
+			  </div>
+			</div>
+      </nav>
+        <div class="login">
+            <div class="bloc">
+                <div class="login_div">
+                    <i id="center" class="fa fa-sign-in" aria-hidden="true"></i><a href="">Se connecter</a><i id="center" class="fa fa-sign-in" aria-hidden="true"></i>
+                </div>    
+                <div class="login_div">
+                    <i id="center" class="fa fa-registered" aria-hidden="true"></i><a href="">S'enregister</a><i id="center" class="fa fa-registered" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+      <main>
+          <div class="bloc_principal">
+            {% block principal %}
+                
+            {% endblock %}
+          </div>
+      </main>
+      <footer>
+          <div>
+
+          </div>
+      </footer>
+    </body>
+</html>
