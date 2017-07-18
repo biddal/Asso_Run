@@ -14,10 +14,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="distance" type="integer" column="distance" nullable="false">
-      <options>
-        <option name="unsigned"/>
-      </options>
-    </field>
+    <field name="date" type="date" column="date" nullable="false"/>
   </entity>
 </doctrine-mapping>

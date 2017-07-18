@@ -1,0 +1,42 @@
+{% extends "template.html.twig" %}
+
+{% block principal %}
+    {% if events|length %}
+        <div class="event_body">
+            <div class="event_head">
+                <div class="event_head1">
+                    <h1>Evénements disponible:</h1>
+                </div>
+                <div class="event_head1">
+                    <h2>
+                        <b class="lightgreen">{{ events|length }}</b> 
+                        événement(s) trouvé(s)
+                    </h2>
+                </div>
+            </div>
+            
+            {% for event in events %} 
+                {# on peut mettre ce que l'on veut au 1er event c'est juste une "var" afin de parcourir le tableau
+                   par la variable events créé dans le controller #}
+                <div class="event_prin">
+                    <div>
+                        {{ event.name }}
+                    </div>
+                    <div>
+                        {{ event.city }}
+                    </div>
+                    <div>
+                        {{ event.date|date('d/m/Y') }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="etablishment-container">
+                    <h2>Aucun événement pour le moment</h2>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        
+    {% endif %}
+{% endblock %}
