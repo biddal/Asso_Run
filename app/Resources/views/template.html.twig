@@ -9,10 +9,13 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> <!-- Appel de la librairie pour affichage des icones font -->
-        {% stylesheets 'css/*' filter='cssrewrite' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
+        {% block stylesheets %}
+            {% stylesheets 'css/*' filter='cssrewrite' %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+                <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> <!-- Appel de la librairie pour affichage des icones font -->
+                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+            {% endstylesheets %}
+        {% endblock %}
     </head>
     <body>
       <header>
@@ -29,7 +32,7 @@ and open the template in the editor.
 		<!-- <a href="#">Menu</a> -->
 			<div class="first_div">
 			  <div class="secondary_div">
-                              <i id="center" class="fa fa-home" aria-hidden="true"></i><a href="">Accueil</a><i id="center" class="fa fa-home" aria-hidden="true"></i>
+                              <i id="center" class="fa fa-home" aria-hidden="true"></i><a href="{{ path('index') }}">Accueil</a><i id="center" class="fa fa-home" aria-hidden="true"></i>
 			  </div>
 			  <div class="secondary_div">
 				<i id="center" class="fa fa-forumbee" aria-hidden="true"></i><a href="">Evénements</a><i id="center" class="fa fa-forumbee" aria-hidden="true"></i>
@@ -44,12 +47,37 @@ and open the template in the editor.
       </nav>
         <div class="login">
             <div class="bloc">
-                <div class="login_div">
-                    <i id="center" class="fa fa-sign-in" aria-hidden="true"></i><a href="">Se connecter</a><i id="center" class="fa fa-sign-in" aria-hidden="true"></i>
-                </div>    
-                <div class="login_div">
-                    <i id="center" class="fa fa-registered" aria-hidden="true"></i><a href="">S'enregister</a><i id="center" class="fa fa-registered" aria-hidden="true"></i>
-                </div>
+                {% if not app.user %} 
+                    <div class="login_div">
+                        <div class="menu_log">
+                            <i id="center" class="fa fa-sign-in" aria-hidden="true"></i>
+                        </div>    
+                        <div class="menu_log">   
+                            <a href="{{ path('login') }}"> Se connecter </a>
+                        </div>    
+                        <div class="menu_log">   
+                            <i id="center" class="fa fa-sign-in" aria-hidden="true"></i>
+                        </div> 
+                    </div>
+                    <div class="login_div">
+                        <div class="menu_log">
+                            <i id="center" class="fa fa-registered" aria-hidden="true"></i>
+                        </div>    
+                        <div class="menu_log">   
+                            <a href="{{ path('register') }}"> S'enregistrer </a>
+                        </div>    
+                        <div class="menu_log">   
+                            <i id="center" class="fa fa-registered" aria-hidden="true"></i>
+                        </div> 
+                    </div>  
+                {% else %}
+                    <div class="login_div"> 
+                        <b>Bonjour {{ app.user.username }}.</b> 
+                    </div>
+                    <div class="login_div">
+                        <i id="center" class="fa fa-sign-out" aria-hidden="true"></i><a href="{{ path('logout') }}"> Se déconnecter </a><i id="center" class="fa fa-sign-out" aria-hidden="true"></i>
+                    </div>
+                {% endif %}
             </div>
         </div>
       <main>
@@ -61,8 +89,15 @@ and open the template in the editor.
       </main>
       <footer>
           <div>
-
+               <span class="footer">@Copyright</span>
           </div>
       </footer>
     </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    {% block javascripts %}
+        {% javascripts 'js/*' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
 </html>

@@ -85,7 +85,7 @@ nav
 	display:inline;
 }
 /******************************************************************************/
-/*                                Login                                        */
+/*                                Login                                       */
 /******************************************************************************/
 .login
 {
@@ -114,6 +114,15 @@ nav
   align-items: center;
   font-weight: bold;
   width:50%;
+  display:inline;
+}
+.menu_log
+{
+    display:flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  display:inline;
 }
 /******************************************************************************/
 /*                                Main                                        */
@@ -163,13 +172,46 @@ main
 }
 
 /******************************************************************************/
+/*                                Page login                                  */
+/******************************************************************************/
+.log_prin
+{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width:100%;
+}
+.log_main
+{
+    display: flex;
+    flex-flow: column nowrap;
+    width:50%;
+}
+/******************************************************************************/
+/*                                Page create account                         */
+/******************************************************************************/
+.formu_create
+{
+    margin:auto;
+    width:60%;
+}
+/******************************************************************************/
 /*                                Footer                                      */
 /******************************************************************************/
 footer
 {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   width:80%;
   height: 100px;
   background-color: #2E64FE;
+}
+.footer
+{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: center;
 }
 /******************************************************************************/
 /*                             Media Query                                    */
