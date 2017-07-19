@@ -1,0 +1,12 @@
+{% extends "template.html.twig" %}
+
+{% block principal %}
+    <div id="menu_admin">
+        <a id="ss_menu_admin" href="{{ path('addrun') }}">
+                Créer une nouvelle course
+        </a>
+        <a id="ss_menu_admin" href="{{ path('addrslt') }}">
+                Entrer les résultats
+        </a>
+    </div>
+{% endblock %}

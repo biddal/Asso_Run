@@ -43,6 +43,11 @@ and open the template in the editor.
 			  <div class="secondary_div">
 				<i id="center" class="fa fa-calendar" aria-hidden="true"></i><a href="">Classements</a><i id="center" class="fa fa-calendar" aria-hidden="true"></i>
 			  </div>
+                          {% if is_granted('ROLE_ADMIN') %}
+                                <div class="secondary_div">
+                                    <i id="center" class="fa fa-lock" aria-hidden="true"></i><a href="{{ path('admin') }}">Admin</a><i id="center" class="fa fa-lock" aria-hidden="true"></i>
+                                </div>
+                          {% endif %}
 			</div>
       </nav>
         <div class="login">

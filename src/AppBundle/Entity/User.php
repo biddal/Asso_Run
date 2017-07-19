@@ -8,9 +8,16 @@ use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * User
  *
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     errorPath="username",
+ *     message="Nom d'utilisateur non disponible car déjà utilisé."
+ * )
+ * 
  * @ORM\Table(name="user", indexes={@ORM\Index(name="FK_idtyp", columns={"typ_id"})})
  * @ORM\Entity
  */
@@ -50,6 +57,13 @@ class User implements UserInterface, Serializable
      * @ORM\Column(name="birthday", type="date", nullable=false)
      */
     private $birthday;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=15, nullable=false)
+     */
+    private $role;
 
     /**
      * @var integer
@@ -193,6 +207,30 @@ class User implements UserInterface, Serializable
     }
 
     /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -225,11 +263,12 @@ class User implements UserInterface, Serializable
     {
         return $this->typ;
     }
+
     public function eraseCredentials() {
         
     }
     public function getRoles() {
-        return array('ROLE_USER'); //TODO
+        return array($this->role);
     }
     public function getSalt() {
         return null;
@@ -257,4 +296,5 @@ class User implements UserInterface, Serializable
     {
         return $user->getUsername() == $this->getUsername();
     }
+
 }

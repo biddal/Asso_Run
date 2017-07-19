@@ -28,6 +28,11 @@
       </options>
     </field>
     <field name="birthday" type="date" column="birthday" nullable="false"/>
+    <field name="role" type="string" column="role" length="15" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-one field="typ" target-entity="Type" fetch="LAZY">
       <join-columns>
         <join-column name="typ_id" referenced-column-name="id"/>

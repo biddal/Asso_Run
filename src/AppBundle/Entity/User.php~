@@ -48,6 +48,13 @@ class User
     private $birthday;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=15, nullable=false)
+     */
+    private $role;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

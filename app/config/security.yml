@@ -9,7 +9,7 @@ security:
         
     firewalls:
         main:
-            anonymous: ~
+            anonymous: true
             form_login:
                 login_path: /login
                 check_path: /login
@@ -20,5 +20,8 @@ security:
                 #always_remember_me: true
                     
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
+        
+        

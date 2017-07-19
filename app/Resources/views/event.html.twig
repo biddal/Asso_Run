@@ -18,17 +18,19 @@
             {% for event in events %} 
                 {# on peut mettre ce que l'on veut au 1er event c'est juste une "var" afin de parcourir le tableau
                    par la variable events créé dans le controller #}
-                <div class="event_prin">
-                    <div>
-                        {{ event.name }}
+                <a href="">
+                    <div class="event_prin">
+                        <div>
+                            {{ event.name }}
+                        </div>
+                        <div>
+                            {{ event.city }}
+                        </div>
+                        <div>
+                            {{ event.date|date('d/m/Y') }}
+                        </div>
                     </div>
-                    <div>
-                        {{ event.city }}
-                    </div>
-                    <div>
-                        {{ event.date|date('d/m/Y') }}
-                    </div>
-                </div>
+                </a>
             {% else %}
                 <div class="etablishment-container">
                     <h2>Aucun événement pour le moment</h2>
