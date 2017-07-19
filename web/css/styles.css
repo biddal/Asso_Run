@@ -277,7 +277,55 @@ footer
 /******************************************************************************/
 /*                             Media Query                                    */
 /******************************************************************************/
-@media screen and (max-width: 768px)
+@media screen and (max-width: 360px)
 {
-  
+    header div:nth-child(1) img
+    {
+      width:90%;
+    }
+    header h1
+    {
+        font-family: "Predator", Helvetica, Arial, sans-serif;
+        font-size:25px;
+        width:100%;
+        color:white;
+    }
+    /******************************************************************************/
+    /*                                Nav                                         */
+    /******************************************************************************/
+    nav
+    {
+      flex-flow: column nowrap;
+      width:80%;
+      height: 30px;
+      margin-bottom: 75px;
+    }
+    .first_div
+    {
+      flex-flow: column wrap;
+    }
+    /******************************************************************************/
+    /*                                Login                                       */
+    /******************************************************************************/
+    .login
+    {
+      height: 70px;
+    }
+    .bloc
+    {
+      align-items: center;
+      width:90%;
+    }
+    .login_div
+    {
+      font-size:11px;
+    }
+    .menu_log
+    {
+        display:flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      align-items: center;
+      display:inline;
+    }
 }

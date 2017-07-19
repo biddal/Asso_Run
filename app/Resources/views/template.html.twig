@@ -38,10 +38,10 @@ and open the template in the editor.
 				<i id="center" class="fa fa-forumbee" aria-hidden="true"></i><a href="{{ path('event') }}">Evénements</a><i id="center" class="fa fa-forumbee" aria-hidden="true"></i>
 			  </div>
 			  <div class="secondary_div">
-				<i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i><a href="">Résultats</a><i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i>
+				<i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i><a href="{{ path('index') }}">Résultats</a><i id="center" class="fa fa-shopping-cart" aria-hidden="true"></i>
 			  </div>
 			  <div class="secondary_div">
-				<i id="center" class="fa fa-calendar" aria-hidden="true"></i><a href="">Classements</a><i id="center" class="fa fa-calendar" aria-hidden="true"></i>
+				<i id="center" class="fa fa-calendar" aria-hidden="true"></i><a href="{{ path('index') }}">Classements</a><i id="center" class="fa fa-calendar" aria-hidden="true"></i>
 			  </div>
                           {% if is_granted('ROLE_ADMIN') %}
                                 <div class="secondary_div">
@@ -77,7 +77,7 @@ and open the template in the editor.
                     </div>  
                 {% else %}
                     <div class="login_div"> 
-                        <b>Bonjour {{ app.user.username }}.</b> 
+                        <b>Bonjour {{ app.user.username }}</b> 
                     </div>
                     <div class="login_div">
                         <i id="center" class="fa fa-sign-out" aria-hidden="true"></i><a href="{{ path('logout') }}"> Se déconnecter </a><i id="center" class="fa fa-sign-out" aria-hidden="true"></i>

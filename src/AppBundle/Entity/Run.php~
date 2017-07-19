@@ -36,6 +36,13 @@ class Run
     /**
      * @var integer
      *
+     * @ORM\Column(name="validate", type="integer", nullable=false)
+     */
+    private $validate = '0';
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")

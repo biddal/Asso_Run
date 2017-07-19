@@ -36,6 +36,13 @@ class Run
     /**
      * @var integer
      *
+     * @ORM\Column(name="validate", type="integer", nullable=false)
+     */
+    private $validate = '0';
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -114,6 +121,30 @@ class Run
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set validate
+     *
+     * @param integer $validate
+     *
+     * @return Run
+     */
+    public function setValidate($validate)
+    {
+        $this->validate = $validate;
+
+        return $this;
+    }
+
+    /**
+     * Get validate
+     *
+     * @return integer
+     */
+    public function getValidate()
+    {
+        return $this->validate;
     }
 
     /**

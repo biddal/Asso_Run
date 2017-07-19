@@ -1,5 +1,20 @@
 {% extends "template.html.twig" %}
 
 {% block principal %}
-    add resultat
+    <h1>Choisir la course afin d'y rentrer les temps</h1>
+        <SELECT id="eventid" name="list_run" size="1">
+            {% for event in events %}
+                <OPTION value='{{ event.id }}'>{{ event.name }}</OPTION>
+            {% endfor %}
+        </SELECT>
+        <form method="post" action="">
+            {% for event in events %}
+                <label></label>
+                <label>Temps : </label><input type="" name="time">
+            {% endfor %}    
+            <input type="submit" value="Envoyer" />
+            <input type="hidden" name="eventid" id="selectedcourse"/>
+        </form>
+        
+ 
 {% endblock %}

@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -52,7 +51,7 @@ class User implements UserInterface, Serializable
     private $lastname;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="birthday", type="date", nullable=false)
      */
@@ -75,9 +74,9 @@ class User implements UserInterface, Serializable
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Type
+     * @var Type
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
+     * @ORM\ManyToOne(targetEntity="Type")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="typ_id", referencedColumnName="id")
      * })
@@ -185,7 +184,7 @@ class User implements UserInterface, Serializable
     /**
      * Set birthday
      *
-     * @param \DateTime $birthday
+     * @param DateTime $birthday
      *
      * @return User
      */
@@ -199,7 +198,7 @@ class User implements UserInterface, Serializable
     /**
      * Get birthday
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getBirthday()
     {
@@ -243,11 +242,11 @@ class User implements UserInterface, Serializable
     /**
      * Set typ
      *
-     * @param \AppBundle\Entity\Type $typ
+     * @param Type $typ
      *
      * @return User
      */
-    public function setTyp(\AppBundle\Entity\Type $typ = null)
+    public function setTyp(Type $typ = null)
     {
         $this->typ = $typ;
 
@@ -257,18 +256,17 @@ class User implements UserInterface, Serializable
     /**
      * Get typ
      *
-     * @return \AppBundle\Entity\Type
+     * @return Type
      */
     public function getTyp()
     {
         return $this->typ;
     }
-
-    public function eraseCredentials() {
+     public function eraseCredentials() {
         
     }
     public function getRoles() {
-        return array($this->role);
+        return array($this->role); //TODO
     }
     public function getSalt() {
         return null;
@@ -296,5 +294,5 @@ class User implements UserInterface, Serializable
     {
         return $user->getUsername() == $this->getUsername();
     }
-
+    
 }

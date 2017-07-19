@@ -51,9 +51,20 @@ class AdminController extends Controller
      * @Route("/admin/addrslt", name="addrslt")
      */
     
-    public function addrsltAction()
-    {
-       
-        return $this->render('addrslt.html.twig');
-    } 
+    public function selectrunAction(Request $request)
+    {       
+       $em = $this->getDoctrine()->getManager();
+       $query = $em->createQuery('SELECT r
+                                  FROM AppBundle:Run r
+                                  WHERE r.validate = :bool'
+                                )->setParameter ('bool',0);       
+      $events = $query->getResult();
+     
+      
+      return $this->render('addrslt.html.twig',
+              array('events'=> $events
+              ));
+    }
+    
+    
 }

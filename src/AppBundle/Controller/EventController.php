@@ -2,11 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Inscription;
+use DateTime;
+use Doctrine\DBAL\Types\Type;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use DateTime;
-use Doctrine\DBAL\Types\Type;
 
 class EventController extends Controller
 {
@@ -25,5 +26,29 @@ class EventController extends Controller
       return $this->render('event.html.twig',
               array('events'=> $events
               ));
+    }
+    /**
+     * @Route("/event/inscription", name="inscriptionevent")
+     */
+    
+    public function inscriptionrunAction(Request $request)
+    {
+        $idcourse = $request->query->get('idrun');
+        $user = $this->getUser();
+        $inscription = new Inscription();
+        $em = $this->getDoctrine()->getManager();
+        
+        $query = $em->createQuery('SELECT r
+                                   FROM AppBundle:Run r 
+                                   WHERE r.id = :id'
+                                 )->setParameter('id', $idcourse);
+        $run = $query->getResult();
+        
+        $inscription->setIdUser($user);
+        $inscription->setIdRun($run[0]);
+        
+        $em->persist($inscription);
+        $em->flush();
+        return $this->render('inscriptionevent.html.twig');
     }
 }

@@ -1,0 +1,46 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Inscription
+ *
+ * @ORM\Table(name="inscription", indexes={@ORM\Index(name="FK_idrun", columns={"id_run"}), @ORM\Index(name="FKiduser", columns={"id_user"})})
+ * @ORM\Entity
+ */
+class Inscription
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Run
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Run")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_run", referencedColumnName="id")
+     * })
+     */
+    private $idRun;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
+
+
+}
+
