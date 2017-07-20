@@ -20,13 +20,21 @@ class EventController extends Controller
        $query = $em->createQuery('SELECT r
                                   FROM AppBundle:Run r
                                   WHERE r.date >= :date'
-                                )->setParameter('date', new DateTime('NOW'), Type::DATETIME);
-       
+                                )->setParameter('date', new DateTime('NOW'), Type::DATETIME);       
       $events = $query->getResult();
+      
+       $em1 = $this->getDoctrine()->getManager();
+       $query1 = $em1->createQuery('SELECT i
+                                  FROM AppBundle:Inscription i
+                                  WHERE i.idUser = :user'
+                                )->setParameter('user', $this->getUser()->getId());       
+      $events1 = $query1->getResult();
+      
       return $this->render('event.html.twig',
-              array('events'=> $events
+              array('events'=> $events,'inscriptions'=> $events1
               ));
     }
+    
     /**
      * @Route("/event/inscription", name="inscriptionevent")
      */
@@ -51,4 +59,5 @@ class EventController extends Controller
         $em->flush();
         return $this->render('inscriptionevent.html.twig');
     }
+    
 }

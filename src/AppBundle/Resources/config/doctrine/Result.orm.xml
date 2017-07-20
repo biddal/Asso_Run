@@ -8,7 +8,12 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="times" type="time" column="times" nullable="false"/>
+    <field name="times" type="float" column="times" precision="10" scale="0" nullable="false"/>
+    <field name="point" type="integer" column="point" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
     <many-to-one field="idRun" target-entity="Run" fetch="LAZY">
       <join-columns>
         <join-column name="id_run" referenced-column-name="id"/>

@@ -1,20 +1,47 @@
 {% extends "template.html.twig" %}
 
 {% block principal %}
+    <div>
     <h1>Choisir la course afin d'y rentrer les temps</h1>
+        
         <SELECT id="eventid" name="list_run" size="1">
-            {% for event in events %}
+            <OPTION value='0'>Selectionner une course</OPTION>
+            {% for event in validate %}
                 <OPTION value='{{ event.id }}'>{{ event.name }}</OPTION>
             {% endfor %}
         </SELECT>
-        <form method="post" action="">
+
+        {#<form method="post" action="">
             {% for event in events %}
-                <label></label>
                 <label>Temps : </label><input type="" name="time">
             {% endfor %}    
             <input type="submit" value="Envoyer" />
             <input type="hidden" name="eventid" id="selectedcourse"/>
-        </form>
-        
- 
+        </form>#}
+        {#{{ dump(events) }}#}
+        {% for meet in validate %}
+            <div class="hidden formTime" id="{{ meet.id }}">
+            <h2>{{ meet.name }}</h2>
+                <div class="formu_create" >
+                    <form action="">
+                        {% for event in events if event.idRun.id == meet.id %}
+                            <div class="first">
+                                <div id="temps">
+                                    <span>{{ event.idUser.firstname }} {{ event.idUser.lastname }}</span>
+                                </div>
+                                <div id="temps">
+                                    <label>Temps:</label>
+                                    <input type="number">
+                                </div>
+                            </div>                           
+                       {% endfor %}
+                        <div>
+                            <input type="hidden" name="eventid" id="{{ meet.id }}"/>
+                            <button type="submit">Enregistrer!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

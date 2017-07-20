@@ -50,5 +50,110 @@ class Type
     private $id;
 
 
-}
 
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Type
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set coef
+     *
+     * @param float $coef
+     *
+     * @return Type
+     */
+    public function setCoef($coef)
+    {
+        $this->coef = $coef;
+
+        return $this;
+    }
+
+    /**
+     * Get coef
+     *
+     * @return float
+     */
+    public function getCoef()
+    {
+        return $this->coef;
+    }
+
+    /**
+     * Set ageMin
+     *
+     * @param integer $ageMin
+     *
+     * @return Type
+     */
+    public function setAgeMin($ageMin)
+    {
+        $this->ageMin = $ageMin;
+
+        return $this;
+    }
+
+    /**
+     * Get ageMin
+     *
+     * @return integer
+     */
+    public function getAgeMin()
+    {
+        return $this->ageMin;
+    }
+
+    /**
+     * Set ageMax
+     *
+     * @param integer $ageMax
+     *
+     * @return Type
+     */
+    public function setAgeMax($ageMax)
+    {
+        $this->ageMax = $ageMax;
+
+        return $this;
+    }
+
+    /**
+     * Get ageMax
+     *
+     * @return integer
+     */
+    public function getAgeMax()
+    {
+        return $this->ageMax;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

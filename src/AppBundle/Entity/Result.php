@@ -1,7 +1,9 @@
 <?php
-
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Result;
+use AppBundle\Entity\Run;
+use AppBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,9 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Result
 {
     /**
-     * @var \DateTime
+     * @var float
      *
-     * @ORM\Column(name="times", type="time", nullable=false)
+     * @ORM\Column(name="times", type="float", nullable=false)
      */
     private $times;
 
@@ -29,9 +31,9 @@ class Result
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Run
+     * @var Run
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Run")
+     * @ORM\ManyToOne(targetEntity="Run")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_run", referencedColumnName="id")
      * })
@@ -39,9 +41,9 @@ class Result
     private $idRun;
 
     /**
-     * @var \AppBundle\Entity\User
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -53,7 +55,7 @@ class Result
     /**
      * Set times
      *
-     * @param \DateTime $times
+     * @param flaot $times
      *
      * @return Result
      */
@@ -67,7 +69,7 @@ class Result
     /**
      * Get times
      *
-     * @return \DateTime
+     * @return float
      */
     public function getTimes()
     {
@@ -87,11 +89,11 @@ class Result
     /**
      * Set idRun
      *
-     * @param \AppBundle\Entity\Run $idRun
+     * @param Run $idRun
      *
      * @return Result
      */
-    public function setIdRun(\AppBundle\Entity\Run $idRun = null)
+    public function setIdRun(Run $idRun = null)
     {
         $this->idRun = $idRun;
 
@@ -101,7 +103,7 @@ class Result
     /**
      * Get idRun
      *
-     * @return \AppBundle\Entity\Run
+     * @return Run
      */
     public function getIdRun()
     {
@@ -111,11 +113,11 @@ class Result
     /**
      * Set idUser
      *
-     * @param \AppBundle\Entity\User $idUser
+     * @param User $idUser
      *
      * @return Result
      */
-    public function setIdUser(\AppBundle\Entity\User $idUser = null)
+    public function setIdUser(User $idUser = null)
     {
         $this->idUser = $idUser;
 
@@ -125,10 +127,39 @@ class Result
     /**
      * Get idUser
      *
-     * @return \AppBundle\Entity\User
+     * @return User
      */
     public function getIdUser()
     {
         return $this->idUser;
+    }
+    /**
+     * @var integer
+     */
+    private $point;
+
+
+    /**
+     * Set point
+     *
+     * @param integer $point
+     *
+     * @return Result
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+
+        return $this;
+    }
+
+    /**
+     * Get point
+     *
+     * @return integer
+     */
+    public function getPoint()
+    {
+        return $this->point;
     }
 }

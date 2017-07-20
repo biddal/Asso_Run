@@ -28,19 +28,35 @@
                         <div>
                             {{ event.date|date('d/m/Y') }}
                         </div>
-                        
-                        <div>
-                            <a href="{{ path('inscriptionevent') }}?idrun={{ event.id }}">S'inscrire</a>
-                        </div>
+                        {% set compteur = 0 %}
+                            {% if inscriptions|length %}	
+                                {% for inscription in inscriptions %}
+                                    {% if event.id != inscription.idRun.id %}
+                                         {% set compteur = compteur + 0 %}                                    
+                                    {% else %}
+                                         {% set compteur = compteur + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if compteur == 0 %}
+                                    <div>
+                                        <a href="{{ path('inscriptionevent') }}?idrun={{ event.id }}">S'inscrire</a>
+                                    </div>
+                                {% else %}
+                                    <div>
+                                        <a href="{{ path('inscriptionevent') }}?idrun={{ event.id }}">Se désincrire</a>
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                                <div>
+                                    <a href="{{ path('inscriptionevent') }}?idrun={{ event.id }}">S'inscrire</a>
+                                </div>
+                            {% endif %}
                     </div>
-            {% else %}
-                <div class="etablishment-container">
-                    <h2>Aucun événement pour le moment</h2>
-                </div>
             {% endfor %}
-            </div>
         </div>
     {% else %}
-        
+        <div class="etablishment-container">
+            <h2>Aucun événement pour le moment</h2>
+        </div>        
     {% endif %}
 {% endblock %}

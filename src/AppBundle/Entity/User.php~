@@ -2,15 +2,25 @@
 
 namespace AppBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     errorPath="username",
+ *     message="Nom d'utilisateur non disponible car déjà utilisé."
+ * )
+ * 
  * @ORM\Table(name="user", indexes={@ORM\Index(name="FK_idtyp", columns={"typ_id"})})
  * @ORM\Entity
  */
-class User
+class User implements UserInterface, Serializable
 {
     /**
      * @var string
@@ -41,7 +51,7 @@ class User
     private $lastname;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="birthday", type="date", nullable=false)
      */
@@ -64,9 +74,9 @@ class User
     private $id;
 
     /**
-     * @var \AppBundle\Entity\Type
+     * @var Type
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
+     * @ORM\ManyToOne(targetEntity="Type")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="typ_id", referencedColumnName="id")
      * })
@@ -74,5 +84,215 @@ class User
     private $typ;
 
 
-}
 
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return User
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set lastname
+     *
+     * @param string $lastname
+     *
+     * @return User
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * Set birthday
+     *
+     * @param DateTime $birthday
+     *
+     * @return User
+     */
+    public function setBirthday($birthday)
+    {
+        $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * Get birthday
+     *
+     * @return DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Set role
+     *
+     * @param string $role
+     *
+     * @return User
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set typ
+     *
+     * @param Type $typ
+     *
+     * @return User
+     */
+    public function setTyp(Type $typ = null)
+    {
+        $this->typ = $typ;
+
+        return $this;
+    }
+
+    /**
+     * Get typ
+     *
+     * @return Type
+     */
+    public function getTyp()
+    {
+        return $this->typ;
+    }
+     public function eraseCredentials() {
+        
+    }
+    public function getRoles() {
+        return array($this->role); //TODO
+    }
+    public function getSalt() {
+        return null;
+    }
+    
+   public function serialize() {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+    public function unserialize($serialized) {
+         list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+    public function equals(UserInterface $user)
+    {
+        return $user->getUsername() == $this->getUsername();
+    }
+    
+}

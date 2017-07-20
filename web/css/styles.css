@@ -141,7 +141,7 @@ main
 {
   display:flex;
   flex-flow: column nowrap;
-  margin:auto;
+  justify-content: flex-start;
   text-align: center;
   min-height: calc(100vh - 330px); 
   background-image:-moz-linear-gradient(#FFFFFF, #2E64FE);
@@ -192,6 +192,8 @@ main
 .formu_create
 {
     margin:auto;
+    margin-top:10px;
+    margin-bottom:20px;
     width:60%;
 }
 /******************************************************************************/
@@ -256,6 +258,43 @@ main
     margin-top: 10px;
     width:30%;
 }
+select
+{
+    width:50%;
+    margin: auto;
+}
+form
+{
+    display:flex;
+    flex-flow: column wrap;
+    width:100%;
+    margin:auto;
+    border:2px solid black;
+}
+.first
+{
+    display:flex;
+    flex-flow: row nowrap;
+    width:100%; 
+    border: 2px solid yellow;
+}
+#temps
+{
+    display:flex;
+    flex-flow:row nowrap;
+    width:50%;
+    font-weight : bold;
+    align-items: center;
+}
+form label, form input
+{
+    width: 50%;
+}
+.hidden
+{
+    display:none;
+}
+
 /******************************************************************************/
 /*                                Footer                                      */
 /******************************************************************************/
