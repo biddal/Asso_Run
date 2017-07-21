@@ -15,4 +15,11 @@ $(document).ready(function( ) {
         $($selected).slideToggle("1500");
         //console.log($selected);
     })
+    
+    $(document).on("change", ".time" ,function() {
+        var id = $(this).attr('id');        
+        var idcoef = $('#coef'+id).html(); 
+        var calcul = Math.floor((1000/$(this).val())*idcoef);
+        $("#point"+id).html(calcul);
+    });
 });

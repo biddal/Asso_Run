@@ -275,7 +275,7 @@ form
 {
     display:flex;
     flex-flow: row nowrap;
-    width:100%; 
+    width:99%; 
     border: 2px solid yellow;
 }
 #temps
