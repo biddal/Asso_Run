@@ -13,4 +13,9 @@ typ in the consol $ sudo apt-get install composer
 Install assetic for the css, JS and picture:
 typ in the consol $ composer require symfony/assetic-bundle
 
+Import the DB in phpmyadmin
+
+Change the DB's name and the password.
+
+
 
