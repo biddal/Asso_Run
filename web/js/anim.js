@@ -14,12 +14,24 @@ $(document).ready(function( ) {
         $($selected).toggleClass("active");
         $($selected).slideToggle("1500");
         //console.log($selected);
-    })
+    });
     
     $(document).on("change", ".time" ,function() {
         var id = $(this).attr('id');        
-        var idcoef = $('#coef'+id).html(); 
+        var idcoef = $('#coef'+id).html();
+        var run = $(this).parent().parent().parent().attr('id');
+        console.log(run);
         var calcul = Math.floor((1000/$(this).val())*idcoef);
         $("#point"+id).html(calcul);
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {
+                iduser: id,
+                time: $(this).val(),
+                point: calcul,
+                idrun: run
+            }
+        });
     });
 });

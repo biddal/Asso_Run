@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Result;
 use AppBundle\Entity\Run;
-use AppBundle\Form\ResultType;
+use AppBundle\Entity\User;
 use AppBundle\Form\RunType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -66,27 +66,42 @@ class AdminController extends Controller
         $query = $em->createQuery('SELECT i
                                    FROM AppBundle:Inscription i
                                  ');       
-        $events = $query->getResult();
-        
-
-        $rslt = new Result();
-        $form = $this->createForm(ResultType::class, $rslt);
+        $events = $query->getResult();        
 
         // 2) handle the submit (will only happen on POST)
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($request->isXmlHttpRequest())
+        {
+            $idRun      = $request->request->get('idrun');
+            $user_id    = $request->request->get('iduser');
+            $time       = $request->request->get('time');
+            $points     = $request->request->get('point');            
 
-            $em = $this->getDoctrine()->getManager();
+            $meeting    = $this->getDoctrine()->getRepository(Run::class)->findOneBy(['id' => $idRun]);
+            $user       = $this->getDoctrine()->getRepository(User::class)->findOneBy(['id' => $user_id]);
+            $result     = $this->getDoctrine()->getRepository(Result::class)->findOneBy(['idUser' => $user_id, 'idRun' => $idRun]);
+            
+            if($result)
+            {
+                $rslt = $result;
+                $rslt->setTimes($time);
+                $rslt->setPoint($points);
+            }
+            else
+            {
+                $rslt = new Result();
+
+                $rslt->setTimes($time);
+                $rslt->setIdRun($meeting);
+                $rslt->setIdUser($user);
+                $rslt->setPoint($points);           
+            }
             $em->persist($rslt);
-            $em->flush();
-
-            return $this->redirectToRoute('login');
+            $em->flush(); 
         }
         
         return $this->render('addrslt.html.twig',
                 array('events'=> $events, 
-                      'form' => $form->createView(),
-                       'validate' => $events0
+                      'validate' => $events0
                 ));
 
         
