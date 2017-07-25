@@ -29,6 +29,7 @@
                             {{ event.date|date('d/m/Y') }}
                         </div>
                         {% set compteur = 0 %}
+                        {% if app.user %}
                             {% if inscriptions|length %}	
                                 {% for inscription in inscriptions %}
                                     {% if event.id != inscription.idRun.id %}
@@ -51,6 +52,7 @@
                                     <a href="{{ path('inscriptionevent') }}?idrun={{ event.id }}">S'inscrire</a>
                                 </div>
                             {% endif %}
+                        {% endif %}
                     </div>
             {% endfor %}
         </div>

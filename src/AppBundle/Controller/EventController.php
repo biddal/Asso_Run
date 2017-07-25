@@ -22,7 +22,8 @@ class EventController extends Controller
                                   WHERE r.date >= :date'
                                 )->setParameter('date', new DateTime('NOW'), Type::DATETIME);       
       $events = $query->getResult();
-      
+      if($this->getUser())
+      {
        $em1 = $this->getDoctrine()->getManager();
        $query1 = $em1->createQuery('SELECT i
                                   FROM AppBundle:Inscription i
@@ -33,6 +34,14 @@ class EventController extends Controller
       return $this->render('event.html.twig',
               array('events'=> $events,'inscriptions'=> $events1
               ));
+      }
+      else
+      {
+          
+          return $this->render('event.html.twig',
+              array('events'=> $events
+                  ));
+      }
     }
     
     /**
