@@ -29,15 +29,11 @@
                                 <div id="temps">
                                     <span>{{ event.idUser.firstname }} {{ event.idUser.lastname }}</span>
                                 </div>
-                                <div id="temps1">
-                                    <span id="coef{{ event.idUser.id }}">{{ event.idUser.typ.coef }}</span>
-                                </div>
                                 <div id="temps">
-                                    <label>Temps:</label>
-                                    <input type="text" class="time" id="{{ event.idUser.id }}">
+                                    <label>Temps: {{ event.times }}</label>
                                 </div>
                                 <div id="temps1">
-                                    <span id="point{{ event.idUser.id }}">En attente...</span>
+                                    <span id="point{{ event.idUser.id }}">Points: {{ event.point }}</span>
                                 </div>
                             </div>                           
                        {% endfor %}

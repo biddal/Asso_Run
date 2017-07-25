@@ -282,13 +282,26 @@ form
 {
     display:flex;
     flex-flow:row nowrap;
-    width:50%;
+    width:30%;
     font-weight : bold;
     align-items: center;
 }
-form label, form input
+#temps1
+{
+    display:flex;
+    flex-flow:row nowrap;
+    width:20%;
+    font-weight : bold;
+    align-items: center;
+}
+label
 {
     width: 50%;
+}
+input
+{
+    text-align: center;
+    width:50px;
 }
 .hidden
 {
