@@ -1,0 +1,19 @@
+{% extends "template.html.twig" %}
+
+{% block principal %}
+    
+    <div>
+        <div class="div1" >
+                {% for general in generals  %}
+                    <div class="div2">
+                        <div class="spa">
+                            <span>{{ general.firstname }} {{ general.lastname }}</span>
+                        </div>
+                        <div class="spa">
+                            <span>Points: {{ general.total }}</span>
+                        </div>
+                    </div>                           
+               {% endfor %}
+        </div>
+    </div>
+{% endblock %}

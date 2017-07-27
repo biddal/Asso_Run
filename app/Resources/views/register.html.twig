@@ -19,35 +19,35 @@
         {% endif %}
         <div class="formu_create">
             {{ form_start(form, {'attr': {'class': 'column-wrapper'} }) }}
-                <div>
+                <div class="register">
                 {{ form_label(form.username) }}
                 {{ form_widget(form.username) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.password.first) }}
                 {{ form_widget(form.password.first) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.password.second) }}
                 {{ form_widget(form.password.second) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.firstname) }}
                 {{ form_widget(form.firstname) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.lastname) }}
                 {{ form_widget(form.lastname) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.birthday) }}
                 {{ form_widget(form.birthday) }}
                 </div>
-                <div>
+                <div class="register">
                 {{ form_label(form.typ) }}
                 {{ form_widget(form.typ) }}
                 </div>
-                <div>
+                <div class="register">
                     <button type="submit">Créez votre compte!</button>
                 </div>
             {{ form_end(form) }}

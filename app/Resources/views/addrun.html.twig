@@ -20,19 +20,19 @@
         {% endif %}
         <div class="formu">
             {{ form_start(form, {'attr': {'class': 'column-wrapper'} }) }}
-                <div>
+                <div class="addrun">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name) }}
                 </div>
-                <div>
+                <div class="addrun">
                 {{ form_label(form.city) }}
                 {{ form_widget(form.city) }}
                 </div>
-                <div>
+                <div class="addrun">
                 {{ form_label(form.date) }}
                 {{ form_widget(form.date) }}
                 </div>
-                <div>
+                <div class="addrun">
                     <button type="submit">Créez votre course!</button>
                 </div>
             {{ form_end(form) }}

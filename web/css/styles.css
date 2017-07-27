@@ -199,10 +199,28 @@ main
 /******************************************************************************/
 .formu_create
 {
+    display:flex;
+    flex-flow:row nowrap;
     margin:auto;
     margin-top:10px;
     margin-bottom:20px;
     width:90%;
+}
+.register
+{
+    display:flex;
+    flex-flow: column nowrap;
+    margin:auto;
+    align-items:center;
+    width:70%;
+}
+.register input, .register label
+{
+    width:40%;
+}
+.register button
+{
+    width:30%;
 }
 /******************************************************************************/
 /*                                Events                                      */
@@ -229,6 +247,7 @@ main
     margin-top:20px;
      width: 100%; 
 }
+
 /******************************************************************************/
 /*                                Admin                                       */
 /******************************************************************************/
@@ -257,14 +276,24 @@ main
 }
 .formu
 {
+    display:flex;
+    flex-flow: row nowrap;
     margin:auto;
     margin-top: 10px;
-    width:50%;
+    width:60%;
 }
 .formu button
 {
     margin-top: 10px;
     width:30%;
+}
+.addrun
+{
+    width:100%;
+}
+.addrun input
+{
+    width:50%;
 }
 select
 {
@@ -307,7 +336,24 @@ input
 {
     display:none;
 }
-
+.div1
+{
+    display:flex;
+    flex-flow: row wrap;
+    witdh:90%;
+}
+.div2
+{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    witdh:100%;
+    border: 2px solid grey;
+}
+.spa
+{
+    width:75%;
+}
 /******************************************************************************/
 /*                                Footer                                      */
 /******************************************************************************/
